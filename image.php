@@ -34,13 +34,9 @@
  
  <html>
  <head>
-     <title>68k.news Image Viewer</title>
+     <title>Image Viewer</title>
  </head>
  <body">
-    <small><a href="<?php echo $_SERVER['HTTP_REFERER'] . '?loc=' . strtoupper($loc) ?>">< Back to article</a></small>
-    <p><small><b>Viewing image:</b> <?php echo $url ?></small></p>
-    <img src="/image_compressed.php?i=<?php echo $url; ?>">
-    <br><br>
-    <small><a href="<?php echo $_SERVER['HTTP_REFERER'] . '?loc=' . strtoupper($loc) ?>">< Back to article</a></small>
+    <img src="image_compressed.php?i=<?php echo $url; ?>">
  </body>
  </html>
