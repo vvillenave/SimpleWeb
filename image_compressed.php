@@ -31,10 +31,10 @@ $raw_imagex = imagesx($raw_image);
 $raw_imagey = imagesy($raw_image);
 
 if ($raw_imagex >= $raw_imagey) {
-	$dest_imagex = 300;
+	$dest_imagex = 900;
 	$dest_imagey = ($raw_imagey / $raw_imagex) * $dest_imagex;
 } else {
-	$dest_imagey = 200;
+	$dest_imagey = 600;
 	$dest_imagex = ($raw_imagex / $raw_imagey) * $dest_imagey;
 }
 
