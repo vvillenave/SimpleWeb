@@ -1,5 +1,7 @@
 {
     "require": {
-        "andreskrey/readability.php": "^2.1"
+        "andreskrey/readability.php": "^2.1",
+        "simplepie/simplepie": "~1.5.6",
+        "geoip2/geoip2": "~2.0"
     }
 }

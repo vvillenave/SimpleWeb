@@ -1,0 +1,139 @@
+@font-face {
+  font-family: 'Open Sans';
+  src: url("./fonts/OpenSans-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url("./fonts//OpenSans-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url("./fonts/OpenSans-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Open Sans';
+  src: url("./fonts/OpenSans-BoldItalic.woff2") format("woff2");
+  font-weight: bold;
+  font-style: italic;
+}
+* {
+  transition:color .3s,
+    background .3s,
+    border .3s;
+}
+*:hover, *:focus {
+  transition:color .8s,
+    background .8s,
+    border .8s;
+}
+body {
+  margin:0;
+  background:white;
+  color:#333;
+  font-family:"Open Sans", sans-serif;
+}
+h1, h2, a {
+  margin:0;
+  color:#2778cd;
+  background:transparent;
+}
+a, input {
+  border:3px solid transparent;
+  border-radius:3px;
+}
+input {
+  box-shadow:0 0 3px darkgrey;
+}
+a:hover, a:focus, input:focus {
+  color:#3c4898;
+  background:#ffd29199;
+  border:3px solid #2778cd;
+  box-shadow:inset;
+}
+header {
+  text-align:center;
+  color:#3c4898;
+}
+header span.highlight {
+  color:#f39203;
+}
+header img {
+  width:100px;
+}
+body.home header,
+body.article header,
+body.news header {
+  padding:3em 0;
+  background:#aaddf9;
+  clip-path: polygon(0 0, 100% 0, 100% 88%, 50% 98%, 0 88%);
+}
+body.news a.result ol {
+  margin:0;
+}
+article {
+  max-width:60em;
+  margin:auto;
+}
+body.results a *:not(h2) {
+  text-decoration:none;
+}
+body.results article a.result {
+  display:block;
+}
+body.results article a.result p {
+  color:#333;
+  text-decoration:none;
+}
+body.results article a.result small {
+  color:#f39203;
+}
+body.news nav ul,
+body.news section ul {
+  list-style-type:none;
+  text-align:center;
+  margin:0;
+}
+body.news nav ul li,
+body.news section ul li {
+  margin:.2em;
+  display:inline-block;
+}
+body.news nav p {
+  clear:both;
+  text-align:center;
+}
+body.news a.result h3 {
+  margin:.5em auto -1em;
+}
+section {
+  width:80%;
+  margin:2em auto;
+  padding:.1em 0 1em;
+  height:auto;
+  text-align:center;
+  border-radius:20px;
+  box-shadow:6px 6px 2px darkgrey;
+  background:radial-gradient(transparent, lightgrey);
+}
+section:focus-within {
+  background:radial-gradient(transparent, #eee);
+}
+section ul {
+  display:inline-block;
+  width:auto;
+  margin:auto;
+  text-align:left;
+}
+footer {
+  text-align:center;
+  margin:4em auto 2em;
+  opacity: .8;
+  font-size:80%;
+}
+
