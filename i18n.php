@@ -3,7 +3,7 @@
 $lang = 'fr';
 $languages = array_map(
   function($str) { return basename($str, '.ini'); },
-  glob('./locales/*.ini')
+  glob(__DIR__.'/locales/*.ini')
 );
 
 if (isset($_GET['lang']) && in_array($_GET['lang'], $languages)) {
@@ -24,7 +24,7 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], $languages)) {
     }
 }
 
-$trans = parse_ini_file('locales/'.$lang.'.ini');
+$trans = parse_ini_file(__DIR__.'/locales/'.$lang.'.ini');
 
 function __($item) {
     global $trans;
