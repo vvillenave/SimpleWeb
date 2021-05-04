@@ -14,8 +14,8 @@ if (isset($_GET['lang']) && in_array($_GET['lang'], $languages)) {
 } elseif (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
     $langs = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
     array_walk($langs, function (&$lang) {
-     $lang = strtr(strtok($lang, ';'), ['-' => '_']);
- });
+        $lang = strtr(strtok($lang, ';'), ['-' => '_']);
+    });
     foreach ($langs as $browser_lang) {
         if (in_array($browser_lang, $languages)) {
             $lang = $browser_lang;
