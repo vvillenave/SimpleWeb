@@ -93,6 +93,9 @@ body.results article a.result p {
 body.results article a.result small {
   color:#f39203;
 }
+body.news h2 {
+  text-align:center;
+}
 body.news nav ul,
 body.news section ul {
   list-style-type:none;
@@ -109,7 +112,13 @@ body.news nav p {
   text-align:center;
 }
 body.news a.result h3 {
-  margin:.5em auto -1em;
+  margin:.5em auto;
+}
+body.news article small {
+  display:block;
+}
+body.news article ol li:only-child {
+  display:none;
 }
 section {
   width:80%;

@@ -1,6 +1,6 @@
 <?php
 // Poor man's localization.
-$lang = 'fr';
+$lang = 'en';
 $languages = array_map(
   function($str) { return basename($str, '.ini'); },
   glob(__DIR__.'/locales/*.ini')

@@ -88,17 +88,18 @@ Here, we'll loop through all of the items in the feed, and $item represents the 
 */
 foreach ($feed->get_items() as $item):
 ?>
-<a class='result' href="<?php echo '../?loc=' . $loc . '&a=' . $item->get_permalink(); ?>">
-<h3><?php echo $item->get_title(); ?></h3></a>
-<?php
+<a class='result' href="<?php echo '../?loc=' . $loc . '&a=' . $item->get_permalink(); ?>"><h3><?php
+  echo $item->get_title();
+?></h3></a><?php
 $subheadlines = $item->get_description();
 $remove_google_link = explode("<li><strong>", $subheadlines);
-$no_blank = str_replace('target="_blank"', "", $remove_google_link[0]) . "</li></ol></font></p>"; 
+$no_blank = str_replace('target="_blank"', "", $remove_google_link[0]) . "</li></ol>"; 
 $cleaned_links = str_replace('<a href="', '<a href="../?loc=' . $loc . '&a=', $no_blank);
 $cleaned_links = strip_tags($cleaned_links, '<a><ol><ul><li><br><p><small><font><b><strong><i><em><blockquote><h1><h2><h3><h4><h5><h6>');
 $cleaned_links = str_replace(__('sn_google_link'), "", $cleaned_links);
 echo $cleaned_links;
-?><small><?php echo __('sn_date') . ' ' . $item->get_date('j F Y | g:i a'); ?></small>
+?>
+<small><?php echo __('sn_date') . ' ' . $item->get_date('j F Y | g:i a'); ?></small>
 <?php endforeach; ?>
 </article>
 <section class='editions' id="editions">
