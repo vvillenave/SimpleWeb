@@ -112,12 +112,16 @@ body.news nav p {
   text-align:center;
 }
 body.news a.result h3 {
-  margin:.5em auto;
+  margin:.5em auto 0;
 }
 body.news article small {
   display:block;
 }
-body.news article ol li:only-child {
+body.news article ol {
+  margin-top:0;
+}
+body.news article ol li:only-child,
+body.news article a.result + a {
   display:none;
 }
 section {
