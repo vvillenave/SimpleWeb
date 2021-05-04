@@ -30,14 +30,12 @@ use andreskrey\Readability\ParseException;
 // If there’s an 'a' argument, print the given article
 if( isset( $_GET['a'] ) && substr( $_GET['a'], 0, 4 ) == "http") {
     $article_url = $_GET["a"];
-    $host = parse_url($article_url, PHP_URL_HOST);
     $error_text = "";
 
     $configuration = new Configuration();
     $configuration
         ->setArticleByLine(false)
-        ->setFixRelativeURLs(true)
-        ->setOriginalURL('http://' . $host);
+        ->setFixRelativeURLs(true);
 
     $readability = new Readability($configuration);
 
@@ -47,7 +45,8 @@ if( isset( $_GET['a'] ) && substr( $_GET['a'], 0, 4 ) == "http") {
 
     try {
         $readability->parse($article_html);
-        $readable_article = strip_tags($readability->getContent(), '<a><ol><ul><li><br><p><small><font><b><strong><i><em><blockquote><h1><h2><h3><h4><h5><h6>');
+        $readable_article = strip_tags($readability->getContent(),
+        '<a><ol><ul><li><br><p><small><font><b><strong><i><em><blockquote><h1><h2><h3><h4><h5><h6>');
         $readable_article = str_replace( 'href="http', 'href="./?a=http', $readable_article ); //route links through proxy
 
     } catch (ParseException $e) {
