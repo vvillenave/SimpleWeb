@@ -35,7 +35,9 @@ if( isset( $_GET['a'] ) && substr( $_GET['a'], 0, 4 ) == "http") {
     $configuration = new Configuration();
     $configuration
         ->setArticleByLine(false)
-        ->setFixRelativeURLs(true);
+        ->setFixRelativeURLs(true)
+        ->setOriginalURL($article_url)
+        ->setSummonCthulhu(true);
 
     $readability = new Readability($configuration);
 
@@ -48,9 +50,10 @@ if( isset( $_GET['a'] ) && substr( $_GET['a'], 0, 4 ) == "http") {
         $readable_article = strip_tags($readability->getContent(),
         '<a><ol><ul><li><br><p><small><font><b><strong><i><em><blockquote><h1><h2><h3><h4><h5><h6>');
         $readable_article = str_replace( 'href="http', 'href="./?a=http', $readable_article ); //route links through proxy
+        $readable_article = str_replace(' target="_blank"', '', $readable_article);
 
     } catch (ParseException $e) {
-        $error_text .= 'Sorry! ' . $e->getMessage() . '<br>';
+        $error_text .= __('sp_error') . $e->getMessage() . '<br>';
     }
 ?>
   <title><?php echo $readability->getTitle() . ' (' . __('sp_title') . ')';?></title>

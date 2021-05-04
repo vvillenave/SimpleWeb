@@ -103,9 +103,10 @@ foreach ($feed->get_items() as $item):
 $subheadlines = explode('</li>', $item->get_description());
 foreach ($subheadlines as $subheadline):
 preg_match('/(http[s]?:\/\/[^"]+)/', $subheadline, $results);
-echo str_replace('<li><strong><a href="">' . __('sn_google_link') . '</a></strong>', '',
+echo str_replace('<li><strong>', '',
+     str_replace(__('sn_google_link'), '',
      str_replace(' target="_blank"', '',
-     str_replace($results[1], '../?loc=' . $loc . '&a=' . gn_extract($results[1]), $subheadline)));
+     str_replace($results[1], '../?loc=' . $loc . '&a=' . gn_extract($results[1]), $subheadline))));
 endforeach;
 ?>
 </ul>
