@@ -41,7 +41,37 @@ if( isset( $_GET['a'] ) && substr( $_GET['a'], 0, 4 ) == "http") {
 
     $readability = new Readability($configuration);
 
-    if(!$article_html = file_get_contents($article_url)) {
+    if (!function_exists('str_starts_with')) {
+      function str_starts_with($haystack, $needle) {
+        return (string)$needle !== '' && strncmp($haystack, $needle, strlen($needle)) === 0;
+      }
+    }
+    function get_stream_context() {
+        $headers = array();
+        /* forward a few selected headers */
+        foreach ($_SERVER as $key => $value) {
+          if (/*str_starts_with($key, 'HTTP_ACCEPT') ||*/
+              in_array($key, array('HTTP_USER_AGENT', 'HTTP_ACCEPT_LANGUAGE'))) {
+            $header = ucwords(str_replace('_', '-', strtolower(substr($key, 5))), '-');
+            if (! array_key_exists($header, $headers))
+              $headers[$header] = $value;
+          }
+        }
+        $header_data = '';
+        foreach ($headers as $header => $value) {
+          $header_data .= "$header: $value\r\n";
+        }
+    //var_dump($header_data);
+        return stream_context_create(array(
+          'http' => array(
+            'header' => $header_data,
+    #        'method' => 'POST',
+    #        'content' => $json,
+          )
+        ));
+    }
+
+    if(!$article_html = file_get_contents($article_url, false, get_stream_context())) {
         $error_text .=  "Failed to get the article :( <br>";
     }
 
